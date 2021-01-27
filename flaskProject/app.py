@@ -1,4 +1,4 @@
-from flask import Flask,request
+from flask import Flask,request,jsonify
 from flask_api import status
 from Generate import Generate
 from flask_cors import CORS, cross_origin
@@ -66,6 +66,8 @@ def convert():
             else:    
                 return {"Error":"Invalid type or not update"+str()},status.HTTP_400_BAD_REQUEST
         rs.append(singleRecord)
-    return {"data":rs},status.HTTP_200_OK
+        data=jsonify(rs)
+        data.headers.add("Access-Control-Allow-Origin", "*")
+    return data,status.HTTP_200_OK
 if __name__ == '__main__':
     app.run()
