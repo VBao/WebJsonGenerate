@@ -6,10 +6,6 @@ import json
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello_world():
-    return {"Here":"'Hello World!'"}
-
 def strToFunc(typeField):
     if 'number' in typeField != -1:
         if '([' in typeField:
@@ -28,8 +24,6 @@ def strToFunc(typeField):
             temp=str(re.findall(r"\[.*\]",typeField)[0])
             temp=temp[1:len(temp)-1]
             temp=temp.split(',')
-            print(temp)
-            print(Generate.string.array(temp))
             return Generate.string.array(temp)
         elif '(' in typeField:
             return Generate.string.string(int(re.findall('\d+',typeField)[0]),int(re.findall('\d+',typeField)[1]))
@@ -37,8 +31,7 @@ def strToFunc(typeField):
             return  Generate.string.string(int(re.findall('\d+',typeField)[0]))
     # TODO Datetime here
     else:
-        print("NOT UP")
-        return {},status.HTTP_403_FORBIDDEN
+        return False
 
 @app.route('/<int:loop>/',methods=['POST'])
 def convert(loop:int):
@@ -47,8 +40,29 @@ def convert(loop:int):
     for _ in range(loop):
         singleRecord={}
         for i in rq:
-            singleRecord[i]=strToFunc(rq[i])
+            if strToFunc(rq[i]) != False:
+                singleRecord[i]=strToFunc(rq[i])
+                return {"Error":"Invalid type or not update"},status.HTTP_400_BAD_REQUEST
         rs.append(singleRecord)
     return {"result":rs},status.HTTP_200_OK
+
+@app.route('/test/',methods=['POST'])
+def convert1():
+    rq=request.json
+    print(rq['request'])
+    print(rq['total'])
+    loop=rq['total']
+    rquest=rq['request']
+    rs=[]
+    for _ in range(loop):
+        singleRecord={}
+        for i in rquest:
+            print(i)
+            if strToFunc(i['type']) != False:
+                singleRecord[i['nameField']]=strToFunc(i['type'])
+            else:    
+                return {"Error":"Invalid type or not update"+str()},status.HTTP_400_BAD_REQUEST
+        rs.append(singleRecord)
+    return {"data":rs},status.HTTP_200_OK
 if __name__ == '__main__':
     app.run()
