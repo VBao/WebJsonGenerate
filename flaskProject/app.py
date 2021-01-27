@@ -1,10 +1,12 @@
 from flask import Flask,request
 from flask_api import status
 from Generate import Generate
+from flask_cors import CORS, cross_origin
 import re
 import json
 app = Flask(__name__)
-
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 def strToFunc(typeField):
     if 'number' in typeField != -1:
@@ -33,21 +35,22 @@ def strToFunc(typeField):
     else:
         return False
 
-@app.route('/<int:loop>/',methods=['POST'])
-def convert(loop:int):
-    rq=request.json
-    rs=[]
-    for _ in range(loop):
-        singleRecord={}
-        for i in rq:
-            if strToFunc(rq[i]) != False:
-                singleRecord[i]=strToFunc(rq[i])
-                return {"Error":"Invalid type or not update"},status.HTTP_400_BAD_REQUEST
-        rs.append(singleRecord)
-    return {"result":rs},status.HTTP_200_OK
+# @app.route('/<int:loop>/',methods=['POST'])
+# def convert(loop:int):
+#     rq=request.json
+#     rs=[]
+#     for _ in range(loop):
+#         singleRecord={}
+#         for i in rq:
+#             if strToFunc(rq[i]) != False:
+#                 singleRecord[i]=strToFunc(rq[i])
+#                 return {"Error":"Invalid type or not update"},status.HTTP_400_BAD_REQUEST
+#         rs.append(singleRecord)
+#     return {"result":rs},status.HTTP_200_OK
 
 @app.route('/test/',methods=['POST'])
-def convert1():
+@cross_origin()
+def convert():
     rq=request.json
     print(rq['request'])
     print(rq['total'])
