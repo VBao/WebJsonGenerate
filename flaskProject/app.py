@@ -15,7 +15,7 @@ def decode(typeFields):
         rs=""
         for i in temp:
             i=i.strip()
-            rs+=strToFunc(i)
+            rs+=str(strToFunc(i))
         return rs
     else: 
         return strToFunc(typeFields)
@@ -27,9 +27,10 @@ def strToFunc(typeField):
             temp = temp.split(',')
             return Generate.array(temp)
         elif '(' in typeField:
+            print('In here')
             start = int(re.findall('\d+', typeField)[0])
             end = int(re.findall('\d+', typeField)[1])
-            return Generate.number.number_len(start, end)
+            return Generate.number.number(start, end)
         elif '-' in typeField:
             return Generate.number.number_len(int(re.findall('\d+', typeField)[0]))
     elif 'string' in typeField:

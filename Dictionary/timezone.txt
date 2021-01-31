@@ -1,0 +1,152 @@
+Australian Central Daylight UTC +10:30
+Japan Standard UTC +9:00
+Australian Central Standard UTC +9:30
+Kyrgyzstan UTC +6:00
+Atlantic Daylight UTC -3:00
+Krasnoyarsk UTC +7:00
+Australian Eastern Daylight UTC +11:00
+Korea Standard UTC +9:00
+Australian Eastern Standard UTC +10:00
+Lord Howe Standard UTC +10:30
+Afghanistan UTC +4:30
+Line Islands UTC +14:00
+Alaska Daylight UTC -8:00
+Magadan UTC +10:00
+Alaska Standard UTC -9:00
+Marquesas UTC -9:30
+Alma-Ata UTC +6:00
+Mountain Daylight UTC -6:00
+Amazon Summer UTC -3:00
+Marshall Islands UTC +12:00
+Amazon UTC -4:00
+Myanmar UTC +6:30
+Armenia UTC +4:00
+Moscow UTC +3:00
+Anadyr UTC +12:00
+Kaliningrad UTC +3:00
+Argentina UTC -3:00
+Mountain Standard UTC -7:00
+Arabia Standard UTC +3:00
+Mauritius UTC +4:00
+Atlantic Standard UTC -4:00
+Maldives UTC +5:00
+Australian Western Standard UTC +8:00
+Malaysia UTC +8:00
+Azores Summer UTC NCTAzores UTC -1:00
+Newfoundland Daylight UTC -2:30
+Azerbaijan Summer UTC +5:00
+Norfolk UTC +11:30
+Azerbaijan UTC +4:00
+Nepal UTC +5:45
+Brunei Darussalam UTC +8:00
+Newfoundland Standard UTC -3:30
+Bolivia UTC -4:00
+Niue UTC -11:00
+Brasilia Summer UTC -2:00
+New Zealand Daylight UTC +13:00
+Brasilia UTC -3:00
+New Zealand Standard UTC +12:00
+British Summer UTC +1:00
+Omsk UTC +6:00
+Bangladesh Standard UTC +6:00
+Pacific Daylight UTC -7:00
+Bhutan UTC +6:00
+Peru UTC -5:00
+Central Africa UTC +2:00
+Kamchatka UTC +12:00
+Cocos Islands UTC +6:30
+Papua New Guinea UTC +10:00
+Central Daylight UTC -5:00
+Phoenix Island UTC +13:00
+Cuba Daylight UTC -4:00
+Philippine UTC +8:00
+Central European Summer UTC +2:00
+Pakistan Standard UTC +5:00
+Central European UTC +1:00
+Pierre and Miquelon Daylight UTC -2:00
+Chatham Island Daylight UTC +13:45
+Pierre and Miquelon Standard UTC -3:00
+Chatham Island Standard UTC +12:45
+Pohnpei Standard UTC +11:00
+Chamorro Standard UTC +10:00
+Pacific Standard UTC -8:00
+Cook Island UTC -10:00
+Pitcairn Standard UTC -8:00
+Chile Summer UTC -3:00
+Palau UTC +9:00
+Chile Standard UTC -4:00
+Paraguay Summer UTC -3:00
+Colombia UTC -5:00
+Paraguay UTC -4:00
+Central Standard UTC -6:00
+Reunion UTC +4:00
+Beijing UTC +8:00
+Samara UTC +4:00
+China Standard UTC +8:00
+South Africa Standard UTC +2:00
+Cuba Standard UTC -5:00
+Solomon IslandsTime UTC +11:00
+Cape Verde UTC -1:00
+Seychelles UTC +4:00
+Easter Island Summer UTC -5:00
+Singapore UTC +8:00
+Easter Island Standard UTC -6:00
+Srednekolymsk UTC +11:00
+East Africa UTC +3:00
+Suriname UTC -3:00
+Eastern Africa UTC +3:00
+Samoa Standard UTC -11:00
+Ecuador UTC -5:00
+Tahiti UTC -10:00
+Eastern Daylight UTC -4:00
+Tajikistan UTC +5:00
+Eastern European Summer UTC +3:00
+Tokelau UTC +13:00
+Eastern European UTC +2:00
+East Timor UTC +9:00
+Eastern Greenland Summer UTC TMTEast Greenland UTC -1:00
+Tuvalu UTC +12:00
+Eastern Standard UTC -5:00
+Ulaanbaatar UTC +8:00
+Fiji Summer UTC +13:00
+Coordinated Universal UTC FJTUruguay Summer UTC -2:00
+Falkland Island Summer UTC -3:00
+Uruguay UTC -3:00
+Falkland Island UTC -4:00
+Uzbekistan UTC +5:00
+Fernando de Noronha UTC -2:00
+Venezuelan Standard UTC -4:30
+Galapagos UTC -6:00
+Vladivostok UTC +10:00
+Gambier UTC -9:00
+Vanuatu UTC +11:00
+Georgia Standard UTC +4:00
+West Africa Summer UTC +2:00
+French Guiana UTC -3:00
+West Africa UTC +1:00
+Gilbert Island UTC +12:00
+Western European Summer UTC +1:00
+Greenwich Mean  • GMT WETWallis and Futuna UTC +12:00
+Guyana UTC -4:00
+West Greenland Summer UTC -2:00
+Hawaii-Aleutian Daylight UTC -9:00
+West Greenland UTC -3:00
+Hawaii-Aleutian Standard UTC -10:00
+Waktu Indonesia Barat (West Indonesian) UTC +7:00
+Hong Kong UTC +8:00
+Waktu Indonesia Timur (East Indonesian) UTC +9:00
+Hovd UTC +7:00
+Waktu Indonesia Tengah (Central Indonesian) UTC +8:00
+Indochina UTC +7:00
+West Samoa UTC +13:00
+Israel Daylight UTC +3:00
+Western Sahara Summer UTC +1:00
+Iran Daylight UTC +4:30
+Western Sahara Standard UTC IRKTYakutsk UTC +9:00
+Iran Standard UTC +3:30
+Yap UTC +10:00
+India Standard UTC +5:30
+Yekaterinburg UTC +5:00
+Israel Standard UTC +2:00
+Yekaterinburg UTC +6:00
+Irish Standard UTC +1:00

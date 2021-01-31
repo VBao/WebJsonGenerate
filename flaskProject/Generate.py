@@ -3,9 +3,8 @@ from time import strftime
 import rstr
 from datetime import *
 
-
 class Generate:
-    def array(*args): return random.choice(args[0])
+    def array(*args): return random.choice(args[0]).strip()
     class number:
         def number(*args):
             if len(args) == 1:
@@ -54,37 +53,43 @@ class Generate:
                 month= '0'+str(month) if day<10 else str(month)
                 return str(day+'/'+month+'/'+str(year))
         def datetime(*args):
-            if len(args)==0:
-                year = random.randint(1975, date.today().year)
-                month = random.randint(1, 12)
-                if month in [1, 3, 5, 7, 9, 11]: day = random.randint(1, 31)
-                elif month in [4, 6, 8, 10, 12]: day = random.randint(1, 30)
-                else: day = random.randint(1, 28) if year % 4 == 0 and year % 400 == 0 else random.randint(1, 29)
-                tempDate= datetime(year,month,day).strftime("%a %b %d %Y ")
-                h=random.randint(0,24)
-                h='0'+str(h) if h<10 else str(h)
-                m=random.randint(0,60)
-                m='0'+str(m) if m<10 else str(m)
-                s=random.randint(0,60)
-                s='0'+str(s) if s<10 else str(s)
-                tempTime= h+":"+ m+":"+s
-                return tempDate +tempTime
-            elif len(args) == 2:
-                startDate = datetime.strptime(args[0], "%d/%m/%Y")
-                endDate = datetime.strptime(args[1], "%d/%m/%Y")
-                year = random.randint(startDate.year, endDate.year)
-                month,day=0,0
-                if year == startDate.year:
-                    month=random.randint(startDate.month,12)
-                    if month !=2 and month %2==0:
-                        day=random.randint(startDate.day,30)
-                    elif month ==2:
-                        day=random.randint(1,29)
-                day= '0'+str(day) if day<10 else str(day)
-                month= '0'+str(month) if day<10 else str(month)
-                tempDate= strftime(datetime.datetime(year,month,day),"%a %b %d %Y ")
-                tempTime= str(random.randint(0,24))+":"+ str(random.randint(0,60))+":"+str(random.randint(0,60))
-                return tempDate +tempTime
+            file=open('../Dictionary/timezone.txt','r+')
+            timez=file.readlines()
+            zone=random.choice(timez)
+            try:
+                if len(args)==0:
+                    year = random.randint(1975, date.today().year)
+                    month = random.randint(1, 12)
+                    if month in [1, 3, 5, 7, 9, 11]: day = random.randint(1, 31)
+                    elif month in [4, 6, 8, 10, 12]: day = random.randint(1, 30)
+                    else: day = random.randint(1, 28) if year % 4 == 0 and year % 400 == 0 else random.randint(1, 29)
+                    tempDate= datetime(year,month,day).strftime("%a %b %d %Y ")
+                    h=random.randint(0,24)
+                    h='0'+str(h) if h<10 else str(h)
+                    m=random.randint(0,60)
+                    m='0'+str(m) if m<10 else str(m)
+                    s=random.randint(0,60)
+                    s='0'+str(s) if s<10 else str(s)
+                    tempTime= h+":"+ m+":"+s
+                    return tempDate +tempTime + ' UTC'+zone.split(" UTC ")[1].strip('\n')+' ('+ zone.split(" UTC ")[0]+')'
+                elif len(args) == 2:
+                    startDate = datetime.strptime(args[0], "%d/%m/%Y")
+                    endDate = datetime.strptime(args[1], "%d/%m/%Y")
+                    year = random.randint(startDate.year, endDate.year)
+                    month,day=0,0
+                    if year == startDate.year:
+                        month=random.randint(startDate.month,12)
+                        if month !=2 and month %2==0:
+                            day=random.randint(startDate.day,30)
+                        elif month ==2:
+                            day=random.randint(1,29)
+                    day= '0'+str(day) if day<10 else str(day)
+                    month= '0'+str(month) if day<10 else str(month)
+                    tempDate= strftime(datetime.datetime(year,month,day),"%a %b %d %Y ")
+                    tempTime= str(random.randint(0,24))+":"+ str(random.randint(0,60))+":"+str(random.randint(0,60))
+                    return tempDate +tempTime  + 'UTC'+zone.split(" UTC ")[1]+'('+ zone.split(" UTC ")[0]+')'
+            except ValueError:
+                Generate.datetime.datetime()
     class people:
         def name():
             l=open('../Dictionary/lastname.txt','r+').readlines()
