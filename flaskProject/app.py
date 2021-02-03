@@ -6,19 +6,21 @@ from flask_cors import CORS, cross_origin
 import re
 import json
 app = Flask(__name__)
-cors = CORS(app, resources={r'/test':{"origins": "http: // localhost: 3000"}})
+cors = CORS(app, resources={r'/test': {"origins": "http: // localhost: 3000"}})
 
 
 def decode(typeFields):
     if 'custom-{' in typeFields:
-        temp=typeFields.split("{")[1].strip("} ").split(';')
-        rs=""
+        temp = typeFields.split("{")[1].strip("} ").split(';')
+        rs = ""
         for i in temp:
-            i=i.strip()
-            rs+=str(strToFunc(i))
+            i = i.strip()
+            rs += str(strToFunc(i))
         return rs
-    else: 
+    else:
         return strToFunc(typeFields)
+
+
 def strToFunc(typeField):
     if 'number' in typeField != -1:
         if '([' in typeField:
@@ -45,35 +47,39 @@ def strToFunc(typeField):
             return Generate.string.string(int(re.findall('\d+', typeField)[0]))
     elif 'date' in typeField and 'time' not in typeField:
         if '([' in typeField:
-            temp=str(re.findall(r"\[.*\]",typeField)[0])
-            temp=temp[1:len(temp)-1]
-            temp=temp.split(',')
+            temp = str(re.findall(r"\[.*\]", typeField)[0])
+            temp = temp[1:len(temp)-1]
+            temp = temp.split(',')
             return Generate.array(temp)
-        elif '(' in typeField: 
-            temp=typeField.split('-(')[1].strip(')')
-            temp=temp.split(',')
+        elif '(' in typeField:
+            temp = typeField.split('-(')[1].strip(')')
+            temp = temp.split(',')
+            print(temp)
             return Generate.datetime.date(temp)
         else:
             return Generate.datetime.date()
     elif 'datetime' in typeField:
         if '([' in typeField:
-            temp=str(re.findall(r"\[.*\]",typeField)[0])
-            temp=temp[1:len(temp)-1]
-            temp=temp.split(',')
+            temp = str(re.findall(r"\[.*\]", typeField)[0])
+            temp = temp[1:len(temp)-1]
+            temp = temp.split(',')
             return Generate.array(temp)
-        elif '(' in typeField: 
-            temp=typeField.split('-(')[1].strip(')')
-            temp=temp.split(',')
-            return Generate.datetime.datetime(temp)
+        elif '(' in typeField:
+            temp = typeField.split('-(')[1].strip(')')
+            temp = temp.split(',')
+            print(temp)
+            return Generate.datetime.datetime(temp[0], temp[1])
         else:
             return Generate.datetime.datetime()
-    elif 'name' in typeField: return Generate.people.name()
+    elif 'name' in typeField:
+        return Generate.people.name()
     elif 'gender' in typeField:
-        temp=typeField.split('-')
-        return Generate.people.gender(temp[1],temp[2])
+        temp = typeField.split('-')
+        return Generate.people.gender(temp[1], temp[2])
     elif 'phone' in typeField:
-            return Generate.people.tel(typeField.split('-')[1]) if '-' in typeField else Generate.people.tel()
-    elif 'address' in typeField: return Generate.people.add()
+        return Generate.people.tel(typeField.split('-')[1]) if '-' in typeField else Generate.people.tel()
+    elif 'address' in typeField:
+        return Generate.people.add()
     else:
         return False
 
@@ -82,23 +88,22 @@ def strToFunc(typeField):
 @cross_origin(origin='localhost')
 def convert():
     rq = request.json
-    print(rq['request'])
-    print(rq['total'])
     loop = rq['total']
     rquest = rq['request']
     rs = []
+    # Check valid type
     for _ in range(loop):
         singleRecord = {}
         for i in rquest:
-            print(i)
-            # if strToFunc(i['type']) != False:
+            if decode(i['type']) == False:
+                err={'Error':'Invalid type'}
+                return jsonify(error=err), status.HTTP_400_BAD_REQUEST
+    for _ in range(loop):
+        singleRecord = {}
+        for i in rquest:
             singleRecord[i['nameField']] = decode(i['type'])
-            # else:
-            #     return {"Error": "Invalid type or not update"+str()}, status.HTTP_400_BAD_REQUEST
         rs.append(singleRecord)
-        data = jsonify(data=rs)
-
-    return data, status.HTTP_200_OK
+    return jsonify(data=rs), status.HTTP_200_OK
 
 
 if __name__ == '__main__':
